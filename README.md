@@ -12,5 +12,5 @@
 ## Project Description
 You can saw easily your favarit location. Also add them
 
-## Live link
-wanderlust-prectise-next-js.vercel.app
+## 🚀 Live Link
+https://wanderlust-prectise-next-js.vercel.app/

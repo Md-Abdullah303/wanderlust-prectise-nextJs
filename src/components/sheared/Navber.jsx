@@ -8,8 +8,8 @@ import MyNavLink from './MyNavLink';
 const Navber = () => {
     return (
         <div>
-            <nav className='flex items-center justify-between gap-5 px-5 py-3'>
-                <ul className='flex items-center gap-2.5  text-lg'>
+            <nav className='flex items-center justify-between gap-8 px-15 py-3'>
+                <ul className='flex items-center gap-5  text-lg'>
                     <li><MyNavLink href={'/'}>Home</MyNavLink></li>
                     <li><MyNavLink href={'/destinations'}>Destinations</MyNavLink></li>
                     <li><MyNavLink href={'/my-booking'}>My Booking</MyNavLink></li>
@@ -21,7 +21,7 @@ const Navber = () => {
                     alt='logo'
                     />
                 </div>
-                <ul className='flex items-center gap-2.5 text-lg'>
+                <ul className='flex items-center gap-4 text-lg'>
                     <li><Link className='flex items-center gap-1.5' href={'/profile'}><FaRegUser /> Profile</Link></li>
                     <li><Link href={'/login'}>Login</Link></li>
                     <li><Link href={'/singUp'}>Sing Up</Link></li>
