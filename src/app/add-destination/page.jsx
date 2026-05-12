@@ -29,10 +29,14 @@ const AddDestination = () => {
       body: JSON.stringify(destination),
     });
 
-    const data = res.json();
+    const data = await res.json();
     console.log("data after post in client:", data);
 
-    toast.success("Destination is added..");
+    if(res.ok){
+      toast.success("Destination is added..");
+    }else{
+      toast.error("Something was wrong!!")
+    }
   };
 
   return (

@@ -15,8 +15,8 @@ const DestinationCard = ({ destination }) => {
         <Image
           src={imageUrl}
           alt={country}
-          width={300}
-          height={300}
+          width={700}
+          height={400}
           className="w-full object-center h-80 object-cover"
         />
         <Chip className="absolute top-4 right-4" color="success"><FiCompass/> Conformed</Chip>
@@ -29,7 +29,7 @@ const DestinationCard = ({ destination }) => {
         </div>
         <p className="flex items-center text-gray-500 text-lg"><FaCalendarAlt /> {duration}</p>
         <p></p>
-        <Link href={`/destination/${_id}`}><Button className={'flex items-center gap-1 text-cyan-400 border-b border-cyan-400 border-none mb-2'} variant="ghost">BOOK NOW <IoIosTrendingUp /></Button></Link>
+        <Link href={`/destinations/${_id}`}><Button className={'flex items-center gap-1 text-cyan-400 border-b border-cyan-400 border-none mb-2'} variant="ghost">BOOK NOW <IoIosTrendingUp /></Button></Link>
       </div>
     </div>
   );
