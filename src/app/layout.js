@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import Navber from "@/components/sheared/Navber";
 import Footer from "@/components/sheared/Footer";
+import { ToastContainer } from "react-toastify";
 
 
 const roboto = Roboto({
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
         <Navber/>
         <main>{children}</main>
         <Footer/>
+         <ToastContainer />
       </body>
     </html>
   );
