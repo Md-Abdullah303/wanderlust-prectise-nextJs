@@ -9,12 +9,14 @@ import {
   TextField,
   Select,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import React from "react";
 import { toast } from "react-toastify";
 
 const AddDestination = () => {
   const onSubmit = async (e) => {
-    e.preventDefault();
+    try{
+      e.preventDefault();
 
     const formData = new FormData(e.target);
     const destination = Object.fromEntries(formData.entries());
@@ -30,13 +32,20 @@ const AddDestination = () => {
     });
 
     const data = await res.json();
-    console.log("data after post in client:", data);
+    console.log("data after post in client:", data, res);
 
     if(res.ok){
       toast.success("Destination is added..");
     }else{
       toast.error("Something was wrong!!")
     }
+    }
+    catch(e){
+      console.log("error :", e);
+    }
+    toast.success("Added successful")
+    redirect("/destinations");
+
   };
 
   return (

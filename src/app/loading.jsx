@@ -3,7 +3,7 @@ import React from "react";
 
 const loadingPage = () => {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex h-[80vh] justify-center items-center gap-4">
       <Spinner />
     </div>
   );

@@ -1,4 +1,6 @@
+import { DeleteModalPage } from "@/components/DestinationDetailsPage/DeleteModal";
 import { EditModal } from "@/components/DestinationDetailsPage/EditModal";
+import BookingButton from "@/components/sheared/BookingButton";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,12 +10,14 @@ import { CiEdit } from "react-icons/ci";
 import { FaArrowLeft, FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { FcOk } from "react-icons/fc";
 import { MdDeleteForever, MdOutlineStar } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
-
+  
   const res = await fetch(`http://localhost:5000/destination/${id}`);
   const destination = await res.json();
+  console.log(destination);
 
   const {
     _id,
@@ -38,9 +42,7 @@ const DestinationDetailsPage = async ({ params }) => {
         </Link>
         <div className="flex items-center gap-4">
           <EditModal destination={destination}/>
-          <Button className={"rounded-lg"} variant="danger">
-            <MdDeleteForever /> Cancel
-          </Button>
+          <DeleteModalPage destination={destination}/>
         </div>
       </div>
       <div className="mt-10">
@@ -101,7 +103,7 @@ const DestinationDetailsPage = async ({ params }) => {
                 <p>{departureDate}</p>
             </div>
             <hr className="w-full my-3.5"/>
-            <Button className={'w-full rounded-none bg-cyan-400 text-white'}>Book Now <CgArrowRight /></Button>
+            <BookingButton/>
             <div className="space-y-2">
                 <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
                 <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
