@@ -1,3 +1,4 @@
+import { EditModal } from "@/components/DestinationDetailsPage/EditModal";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,9 +37,7 @@ const DestinationDetailsPage = async ({ params }) => {
           <FaArrowLeft /> Back to Destinations
         </Link>
         <div className="flex items-center gap-4">
-          <Button className={"rounded-lg"} variant="outline">
-            <CiEdit /> Edit
-          </Button>
+          <EditModal destination={destination}/>
           <Button className={"rounded-lg"} variant="danger">
             <MdDeleteForever /> Cancel
           </Button>
@@ -58,6 +57,7 @@ const DestinationDetailsPage = async ({ params }) => {
         <hr className="w-full my-7" />
         {/* destinationDetails info */}
         <div className="grid grid-cols-3 items-start gap-7">
+            {/* info left */}
           <div className="space-y-5 col-span-2">
             <div className="space-y-3">
               <h2 className="text-xl text-gray-600 flex items-center gap-1.5">
@@ -92,6 +92,7 @@ const DestinationDetailsPage = async ({ params }) => {
                     </div>
             </div>
           </div>
+          {/* info right */}
           <div className="col-span-1 shadow p-3 space-y-1">
             <h3 className="text-gray-400">Starting from</h3>
             <h1 className="text-3xl font-bold">${price}</h1>
