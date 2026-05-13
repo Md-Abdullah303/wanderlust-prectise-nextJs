@@ -6,6 +6,7 @@ import { FiMapPin } from "react-icons/fi";
 import { Button } from "@heroui/react";
 import { FaDollarSign, FaGlobeAmericas, FaPlane } from "react-icons/fa";
 import { AiOutlineStock } from "react-icons/ai";
+import { UpdateProfileModal } from "@/components/DestinationDetailsPage/UpdateProfileModal";
 
 const AdminPage = async () => {
   const session = await auth.api.getSession({
@@ -47,7 +48,10 @@ const AdminPage = async () => {
           <div className="w-full">
             <p className="flex gap-4 justify-between">
               <span className="text-gray-400">Member since</span>{" "}
-              <span className="font-bold">Mar 2024</span>
+              <span className="font-bold">{new Date(userData.createdAt).toLocaleDateString("en-US", {
+                month: "long",
+                year: "numeric"
+              })}</span>
             </p>
             <p className="flex gap-4 justify-between">
               <span className="text-gray-400">Nationality</span>{" "}
@@ -55,12 +59,7 @@ const AdminPage = async () => {
             </p>
           </div>
 
-          <Button
-            variant="ghost"
-            className={"w-full rounded-none bg-cyan-400 text-white"}
-          >
-            Edit Profile
-          </Button>
+          <UpdateProfileModal />
         </div>
         <div className="col-span-2"> 
           <h1 className="text-2xl font-bold mb-5">Travel Stats</h1>

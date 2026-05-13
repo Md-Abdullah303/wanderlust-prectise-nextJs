@@ -69,7 +69,7 @@ const InputRightForm = ({ destination }) => {
       <h1 className="text-3xl font-bold">${price}</h1>
       <p className="text-gray-400 text-lg">per person</p>
       {/* input date */}
-      <div className="col-span-1 shadow p-3 space-y-1">
+      <div className="col-span-1 py-3 space-y-1">
         <div className="">
           <TextField
             onChange={setBookingDepartureDate}

@@ -6,22 +6,23 @@ import { MdDeleteForever } from "react-icons/md";
 import { toast } from "react-toastify";
 
 export function DeleteModalPage({ destination }) {
-    const {_id, destinationName} = destination;
-
-    const handleDelete = async()=>{
-        const res = await fetch(`http://localhost:5000/destination/${_id}`, {
-            method: "DELETE",
-            headers: {
-                "content-type" : "application/json"
-            }
-        })
-        const data = await res.json()
-        // console.log(data);
-        if(data.deletedCount > 0){
-            toast.error("Deleted")
-            redirect("/destinations")
-        }
+  const { _id, destinationName } = destination;
+  
+  const handleDelete = async () => {
+    console.log(_id);
+    const res = await fetch(`http://localhost:5000/destination/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    const data = await res.json();
+    // console.log(data);
+    if (data.deletedCount > 0) {
+      toast.error("Deleted");
+      redirect("/destinations");
     }
+  };
 
   return (
     <AlertDialog>

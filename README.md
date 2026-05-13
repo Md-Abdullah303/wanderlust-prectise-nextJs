@@ -1,3 +1,13 @@
+// admin a edit btn no working,
+home page fully not ready ,
+google fun is not ready,
+proxy not available,
+
+fully responsive not ready,
+
+add a good readme file not ready...
+
+
 🚀 Wanderlust
 
 # Project Name : Wanderlust Location
