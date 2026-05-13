@@ -45,8 +45,6 @@ const AddDestination = () => {
     catch(e){
       console.log("error :", e);
     }
-    toast.success("Added successful")
-    redirect("/destinations");
 
   };
 

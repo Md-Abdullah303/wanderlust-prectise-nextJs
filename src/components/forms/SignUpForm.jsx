@@ -45,6 +45,8 @@ export function SignUpForm() {
         toast.success("login successful")
         router.refresh("/")
         redirect("/")
+    }else if(error?.message){
+      toast.error(error?.message)
     }
 
   };

@@ -16,6 +16,9 @@ const AdminPage = async () => {
   const { email, name, image } = userData;
   console.log(userData);
 
+  const res = await fetch(`http://localhost:5000/booking/${userData.id}`);
+  const bookingDatas = await res.json();
+
   return (
     <div className="lg:max-w-7xl container pt-10 pb-20 mx-auto">
       <div className="space-y-2.5">
@@ -66,7 +69,7 @@ const AdminPage = async () => {
             <div className="border rounded-lg p-3 flex items-center justify-between gap-3.5">
               <div className="">
                 <h1 className="text-xl">Total Bookings</h1>
-                <p className=" font-bold">12</p>
+                <p className="text-green-500 text-3xl font-bold">{bookingDatas.length}</p>
               </div>
               <div className=" bg-green-100 w-10 h-10 rounded-full flex items-center justify-center">
                 <FaPlane />
@@ -75,7 +78,7 @@ const AdminPage = async () => {
             <div className="border rounded-lg p-3 flex items-center justify-between gap-3.5">
               <div className="">
                 <h1 className="text-xl">Countrise Visited</h1>
-                <p className=" font-bold">18</p>
+                <p className="text-3xl text-blue-500 font-bold">18</p>
               </div>
               <div className=" bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center">
                <FaGlobeAmericas />
@@ -84,7 +87,7 @@ const AdminPage = async () => {
             <div className="border rounded-lg p-3 flex items-center justify-between gap-3.5">
               <div className="">
                 <h1 className="text-xl">Upcomming Trips</h1>
-                <p className=" font-bold">2</p>
+                <p className="text-3xl text-amber-200 font-bold">2</p>
               </div>
               <div className=" bg-yellow-100 w-10 h-10 rounded-full flex items-center justify-center">
                 <AiOutlineStock />
@@ -93,7 +96,7 @@ const AdminPage = async () => {
             <div className="border rounded-lg p-3 flex items-center justify-between gap-3.5">
               <div className="">
                 <h1 className="text-xl">Total Spent</h1>
-                <p className=" font-bold">$15,750</p>
+                <p className="text-3xl text-purple-500 font-bold">$15,750</p>
               </div>
               <div className=" bg-purple-100 w-10 h-10 rounded-full flex items-center justify-center">
                 <FaDollarSign />
