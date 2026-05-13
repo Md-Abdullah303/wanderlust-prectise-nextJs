@@ -1,5 +1,5 @@
 
-home page fully not ready ,
+// home page fully not ready ,
 google fun is not ready,
 proxy not available,
 
