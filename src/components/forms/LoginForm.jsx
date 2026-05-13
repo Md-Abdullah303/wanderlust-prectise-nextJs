@@ -34,9 +34,17 @@ const LoginForm = () => {
     if (data?.user) {
       toast.success("login successful");
       router.refresh("/");
-    //   redirect("/");
+      //   redirect("/");
     }
   };
+
+  const handleGooglelogin = async () => {
+    const res = await authClient.signIn.social({
+      provider: "google",
+    });
+    console.log(res);
+  };
+
   return (
     <Form
       className="w-full border bg-white border-gray-200 p-4 shadow"
@@ -108,7 +116,11 @@ const LoginForm = () => {
           <p className="text-gray-400">Or continue with</p>
           <hr className="w-[35%]" />
         </div>
-        <Button className={"rounded-none w-full"} variant="outline">
+        <Button
+          onClick={handleGooglelogin}
+          className={"rounded-none w-full"}
+          variant="outline"
+        >
           <PiGoogleLogo /> Sign Up With Google
         </Button>
         <p className="text-center text-gray-600">
