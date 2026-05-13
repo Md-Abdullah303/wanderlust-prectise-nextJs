@@ -1,5 +1,4 @@
 
-// proxy not available,
 
 fully responsive not ready,
 
