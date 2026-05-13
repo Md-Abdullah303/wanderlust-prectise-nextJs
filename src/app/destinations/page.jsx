@@ -7,7 +7,7 @@ const DestinationPage = async () => {
   // console.log(destination);
 
   return (
-    <div className="w-[70%] md:container mx-auto py-20">
+    <div className="w-[90%] md:container mx-auto py-20">
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">My Bookings</h1>
         <p className="text-lg text-gray-400">

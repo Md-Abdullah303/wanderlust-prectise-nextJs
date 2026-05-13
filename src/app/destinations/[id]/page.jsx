@@ -34,9 +34,9 @@ const DestinationDetailsPage = async ({ params }) => {
   //   console.log(destination);
   // console.log(id);
   return (
-    <div className="lg:max-w-7xl container pt-10 pb-20 mx-auto">
+    <div className="lg:max-w-7xl w-[90%] pt-10 px-4 md:px-8 pb-20 mx-auto">
       {/* top of destinationDetails */}
-      <div className="flex items-center justify-between gap-8">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <Link className="flex items-center gap-1.5" href={"/destinations"}>
           <FaArrowLeft /> Back to Destinations
         </Link>
@@ -60,7 +60,7 @@ const DestinationDetailsPage = async ({ params }) => {
         {/* destinationDetails info */}
         <div className="grid grid-cols-3 items-start gap-7">
           {/* info left */}
-          <div className="space-y-5 col-span-2">
+          <div className="space-y-5 col-span-3 md:col-span-2">
             <div className="space-y-3">
               <h2 className="text-xl text-gray-600 flex items-center gap-1.5">
                 <FaMapMarkerAlt /> {country}
@@ -113,7 +113,10 @@ const DestinationDetailsPage = async ({ params }) => {
             </div>
           </div>
           {/* info right */}
+          <div className="col-span-3 border-t sm:border-none md:grid-cols-1">
           <InputRightForm destination={destination} />
+
+          </div>
         </div>
       </div>
     </div>
