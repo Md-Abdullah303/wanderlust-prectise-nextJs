@@ -1,7 +1,7 @@
 import { DeleteModalPage } from "@/components/DestinationDetailsPage/DeleteModal";
 import { EditModal } from "@/components/DestinationDetailsPage/EditModal";
-import BookingButton from "@/components/sheared/BookingButton";
-import { Button } from "@heroui/react";
+import InputRightForm from "@/components/forms/InputRightForm";
+import { Button, FieldError, Input, Label, TextField } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -14,10 +14,10 @@ import { toast } from "react-toastify";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
-  
+
   const res = await fetch(`http://localhost:5000/destination/${id}`);
   const destination = await res.json();
-  console.log(destination);
+  // console.log(destination);
 
   const {
     _id,
@@ -41,8 +41,8 @@ const DestinationDetailsPage = async ({ params }) => {
           <FaArrowLeft /> Back to Destinations
         </Link>
         <div className="flex items-center gap-4">
-          <EditModal destination={destination}/>
-          <DeleteModalPage destination={destination}/>
+          <EditModal destination={destination} />
+          <DeleteModalPage destination={destination} />
         </div>
       </div>
       <div className="mt-10">
@@ -59,7 +59,7 @@ const DestinationDetailsPage = async ({ params }) => {
         <hr className="w-full my-7" />
         {/* destinationDetails info */}
         <div className="grid grid-cols-3 items-start gap-7">
-            {/* info left */}
+          {/* info left */}
           <div className="space-y-5 col-span-2">
             <div className="space-y-3">
               <h2 className="text-xl text-gray-600 flex items-center gap-1.5">
@@ -72,44 +72,48 @@ const DestinationDetailsPage = async ({ params }) => {
                 </span>{" "}
                 <span>(234 reviews)</span>{" "}
                 <span className="flex items-center gap-1.5">
-                  <FaCalendarAlt />  {duration}
+                  <FaCalendarAlt /> {duration}
                 </span>
               </p>
             </div>
             <div className="">
-                <h1 className="text-2xl">Overview</h1>
-                <p className="text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem corporis dignissimos velit non ea vitae consectetur enim, dolor, ab, id ex hic tempora! Hic animi cupiditate, deleniti et distinctio ratione!</p>
+              <h1 className="text-2xl">Overview</h1>
+              <p className="text-gray-400">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
+                corporis dignissimos velit non ea vitae consectetur enim, dolor,
+                ab, id ex hic tempora! Hic animi cupiditate, deleniti et
+                distinctio ratione!
+              </p>
             </div>
             <div className="">
-                <h1 className="text-2xl">Highlights</h1>
-                <p className="text-gray-400">
-                    {description},
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem corporis dignissimos velit non ea vitae consectetur enim, dolor, ab, id ex hic tempora! Hic animi cupiditate, deleniti et distinctio ratione!</p>
-                    <div className="grid grid-cols-2 gap-4 mt-3">
-                        <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
-                        <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
-                        <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
-                        <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
-                        <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
-                    </div>
+              <h1 className="text-2xl">Highlights</h1>
+              <p className="text-gray-400">
+                {description}, Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Dolorem corporis dignissimos velit non ea
+                vitae consectetur enim, dolor, ab, id ex hic tempora! Hic animi
+                cupiditate, deleniti et distinctio ratione!
+              </p>
+              <div className="grid grid-cols-2 gap-4 mt-3">
+                <p className="flex items-center gap-1.5">
+                  <FcOk /> Lorem ipsum dolor sit amet consectetur.
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <FcOk /> Lorem ipsum dolor sit amet consectetur.
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <FcOk /> Lorem ipsum dolor sit amet consectetur.
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <FcOk /> Lorem ipsum dolor sit amet consectetur.
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <FcOk /> Lorem ipsum dolor sit amet consectetur.
+                </p>
+              </div>
             </div>
           </div>
           {/* info right */}
-          <div className="col-span-1 shadow p-3 space-y-1">
-            <h3 className="text-gray-400">Starting from</h3>
-            <h1 className="text-3xl font-bold">${price}</h1>
-            <p className="text-gray-400 text-lg">per person</p>
-            <div className="mt-4 border bg-slate-100 px-3 py-1 text-lg font-bold">
-                <p>{departureDate}</p>
-            </div>
-            <hr className="w-full my-3.5"/>
-            <BookingButton/>
-            <div className="space-y-2">
-                <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
-                <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
-                <p className="flex items-center gap-1.5"><FcOk /> Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-          </div>
+          <InputRightForm destination={destination} />
         </div>
       </div>
     </div>

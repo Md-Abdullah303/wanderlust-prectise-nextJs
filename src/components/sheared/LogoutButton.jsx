@@ -1,7 +1,7 @@
 "use client";
 import { authClient } from "@/app/lib/auth-client";
 import { Button } from "@heroui/react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React from "react";
 
 const LogoutButton = () => {
@@ -9,6 +9,7 @@ const LogoutButton = () => {
   const handleDlt = async () => {
     await authClient.signOut();
     router.refresh("/")
+    redirect("/")
   };
   return (
     <Button onClick={handleDlt} variant="danger-soft">

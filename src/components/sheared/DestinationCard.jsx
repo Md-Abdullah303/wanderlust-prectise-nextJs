@@ -8,7 +8,7 @@ import { IoIosTrendingUp } from "react-icons/io";
 
 const DestinationCard = ({ destination }) => {
     const {_id, price, imageUrl,departureDate, description, country, destinationName,duration } = destination;
-    console.log(destination);
+    // console.log(destination);
   return (
     <div className=" flex flex-col items-start gap-7 hover:shadow">
       <div className="relative w-full ">

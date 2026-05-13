@@ -15,7 +15,7 @@ const Navber = async () => {
   });
   const userData = session?.user;
 
-  console.log(userData);
+  // console.log(userData);
 
   return (
     <nav className="flex items-center justify-between gap-8 px-15 py-5 shadow-sm sticky top-0  z-50 bg-white w-full">
