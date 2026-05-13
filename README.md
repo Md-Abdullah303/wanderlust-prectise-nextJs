@@ -1,6 +1,5 @@
 
-google fun is not ready,
-proxy not available,
+// proxy not available,
 
 fully responsive not ready,
 
