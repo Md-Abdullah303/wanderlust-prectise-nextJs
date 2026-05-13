@@ -1,9 +1,42 @@
 "use client";
 
+import { authClient } from "@/app/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import { RxUpdate } from "react-icons/rx";
+import { toast } from "react-toastify";
 
 export function UpdateProfileModal() {
+    const router = useRouter()
+
+    const handleUpdateProfile= async (e)=>{
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const updatedUser = Object.fromEntries(formData.entries())
+        // console.log(updatedUser);
+
+        if(updatedUser.name.trim() == ""){
+            toast.info("no thing updated")
+            return;
+        } else if(updatedUser.image.trim() == ""){
+            toast.info("no thing updated")
+            return;
+        }
+        
+        const res = await authClient.updateUser({
+            name: updatedUser.name,
+            // email: updatedUser.email,
+            image: updatedUser.image,
+        })
+        console.log(res);
+        if(res.data){
+            router.refresh("/admin")
+            toast.success("Update seccess full")
+        }
+    }
+
   return (
     <Modal>
       <Button
@@ -17,43 +50,30 @@ export function UpdateProfileModal() {
           <Modal.Dialog className="sm:max-w-md">
             <Modal.CloseTrigger />
             <Modal.Header>
-              <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
-                <Envelope className="size-5" />
-              </Modal.Icon>
-              <Modal.Heading>Contact Us</Modal.Heading>
+              <RxUpdate />
+              <Modal.Heading>Update your Profile</Modal.Heading>
             </Modal.Header>
             <Modal.Body className="p-6">
               <Surface variant="default">
-                <form className="flex flex-col gap-4">
+                <form onSubmit={handleUpdateProfile} className="flex flex-col gap-4">
                   <TextField className="w-full" name="name" type="text">
                     <Label>Name</Label>
                     <Input placeholder="Enter your name" />
                   </TextField>
-                  <TextField className="w-full" name="email" type="email">
+                  {/* <TextField className="w-full" name="email" type="email">
                     <Label>Email</Label>
                     <Input placeholder="Enter your email" />
+                  </TextField> */}
+                  <TextField className="w-full" name="image" type="text">
+                    <Label>Image</Label>
+                    <Input placeholder="Enter your imageURI" />
                   </TextField>
-                  <TextField className="w-full" name="phone" type="tel">
-                    <Label>Phone</Label>
-                    <Input placeholder="Enter your phone number" />
-                  </TextField>
-                  <TextField className="w-full" name="company">
-                    <Label>Company</Label>
-                    <Input placeholder="Enter your company name" />
-                  </TextField>
-                  <TextField className="w-full" name="message">
-                    <Label>Message</Label>
-                    <Input placeholder="Enter your message" />
-                  </TextField>
+                  <Modal.Footer>
+                    <Button  type="submit" slot="close">Save</Button>
+                  </Modal.Footer>
                 </form>
               </Surface>
             </Modal.Body>
-            <Modal.Footer>
-              <Button slot="close" variant="secondary">
-                Cancel
-              </Button>
-              <Button slot="close">Send Message</Button>
-            </Modal.Footer>
           </Modal.Dialog>
         </Modal.Container>
       </Modal.Backdrop>

@@ -1,4 +1,4 @@
-// admin a edit btn no working,
+
 home page fully not ready ,
 google fun is not ready,
 proxy not available,
