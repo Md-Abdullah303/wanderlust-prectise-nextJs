@@ -6,10 +6,10 @@ import { RiGuideFill } from 'react-icons/ri';
 const ChoseWanderlust = () => {
     return (
         <div className='bg-[#EDFCFF]'>
-            <div className="py-15 w-[70%] md:container mx-auto space-y-3.5">
+            <div className="py-15 w-[90%] md:container mx-auto space-y-3.5">
             <div className="text-center space-y-4">
-                <h1 className='text-5xl font-bold'>Why Choose Wanderlust</h1>
-                <p className='text-lg text-gray-500'>Your trusted partner for exceptional travel experiences</p>
+                <h1 className='text-2xl md:text-5xl font-bold'>Why Choose Wanderlust</h1>
+                <p className='md:text-lg text-[14px] text-gray-500'>Your trusted partner for exceptional travel experiences</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8">
                 <div className=" border space-y-3 bg-white p-7">

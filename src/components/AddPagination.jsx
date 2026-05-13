@@ -68,12 +68,12 @@ const AddPagination = () => {
   }, [destination]);
 
   return (
-    <div className="w-[70%] md:container mx-auto py-10 space-y-5">
+    <div className="w-[90%] md:container mx-auto py-10 space-y-5">
       {/* HEADER */}
-      <div className="flex items-start justify-between gap-7">
+      <div className="flex flex-col md:flex-row items-start justify-between gap-7">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold">Featured Destinations</h1>
-          <p className="text-lg text-gray-400">
+          <h1 className="text-xl md:text-3xl font-bold">Featured Destinations</h1>
+          <p className="md:text-lg text-[14px] text-gray-400">
             Handpicked travel experiences for the adventure seekers
           </p>
         </div>
@@ -85,17 +85,6 @@ const AddPagination = () => {
           All Destinations <FaLongArrowAltRight />
         </Button></Link>
       </div>
-
-      {/* ARROWS (OUTSIDE) */}
-      {/* <div className="flex justify-between">
-        <div className="swiper-button-prev bg-black text-white px-3 py-2">
-          Prev
-        </div>
-
-        <div className="swiper-button-next bg-black text-white px-3 py-2">
-          Next
-        </div>
-      </div> */}
 
       {/* SWIPER */}
       <div className="swiper w-full  relative">
@@ -109,7 +98,7 @@ const AddPagination = () => {
               key={desti._id}
               className="swiper-slide h-full flex items-center justify-center  border-red-400"
             >
-              <div className="border p-5 w-[80%] mx-auto space-y-7">
+              <div className="border p-5 w-full md:w-[80%] mx-auto space-y-7">
                 <div className="relative w-full ">
                   <Image
                     src={desti.imageUrl}

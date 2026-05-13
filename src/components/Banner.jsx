@@ -1,4 +1,5 @@
 import { Separator } from "@heroui/react";
+import Link from "next/link";
 // import img from '@/assets/.png'
 
 const Banner = () => {
@@ -15,13 +16,17 @@ const Banner = () => {
         </p>
 
         <div className="flex gap-5">
-          <button className="uppercase bg-cyan-500 px-5 py-3 cursor-pointer">
-            Explore Now
-          </button>
+          <Link href={"/destinations"}>
+            <button className="uppercase bg-cyan-500 px-5 py-3 cursor-pointer">
+              Explore Now
+            </button>
+          </Link>
 
-          <button className="uppercase px-5 py-3 bg-white/50 cursor-pointer">
-            View Destination
-          </button>
+          <Link href={"/destinations"}>
+            <button className="uppercase px-5 py-3 bg-white/50 cursor-pointer">
+              View Destination
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -31,28 +36,26 @@ const Banner = () => {
           <p className="text-xs">Address, City or Zip</p>
         </div>
 
-         <Separator variant="tertiary" orientation="vertical" />
+        <Separator variant="tertiary" orientation="vertical" />
 
         <div>
           <h3 className="text-sm">Date/Duration</h3>
           <p className="text-xs">Anytime/3 Days</p>
         </div>
 
-           <Separator variant="tertiary" orientation="vertical" />
+        <Separator variant="tertiary" orientation="vertical" />
 
         <div>
           <h3 className="text-sm">Budget</h3>
           <p className="text-xs">$0-$3000</p>
         </div>
 
-           <Separator variant="tertiary" orientation="vertical" />
+        <Separator variant="tertiary" orientation="vertical" />
 
         <div>
           <h3 className="text-sm">People</h3>
           <p className="text-xs">5-10</p>
         </div>
-
-
 
         <div className="bg-cyan-500 py-2 px-4">
           <h3>Search</h3>
