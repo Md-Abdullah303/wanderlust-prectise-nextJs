@@ -10,10 +10,10 @@ const MyBookingPage = async () => {
 
   const res = await fetch(`http://localhost:5000/booking/${USERDATA.id}`);
   const bookingDatas = await res.json();
-  // console.log(data);
+  // console.log(bookingDatas);
 
   return (
-    <div className="w-[70%] md:container mx-auto py-20">
+    <div className="w-[90%] md:w-[85%] md:container mx-auto py-20">
       <h1 className="text-3xl font-bold">My Bookings</h1>
       <p className="text-gray-400">
         Manage and view your upcoming travel plans

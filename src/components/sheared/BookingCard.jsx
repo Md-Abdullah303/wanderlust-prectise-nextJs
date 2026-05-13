@@ -6,12 +6,14 @@ import { FiMapPin } from "react-icons/fi";
 import { IoEyeOutline } from "react-icons/io5";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BookingDelteModal } from "./BookingDeleteModal";
+import Link from "next/link";
 
 const BookingCard = ({ booking }) => {
+
   const { imageUrl, price, destinationName, destinationId, _id } = booking;
-//   console.log(booking);
+    // console.log(booking);
   return (
-    <div className="hover:shadow p-2 border duration-150 flex gap-3 items-center w-full">
+    <div className="hover:shadow p-2 border duration-150 flex flex-col md:flex-row  gap-3 items-center w-full">
       <div className=" max-w-100 ">
         <Image
           src={imageUrl}
@@ -21,7 +23,7 @@ const BookingCard = ({ booking }) => {
           className="h-70 object-cover object-center"
         />
       </div>
-      <div className="flex items-end justify-between gap-5 w-full">
+      <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-5 w-full">
         <div className="space-y-3.5">
           <Chip size="lg" color="success">
             Confirmed
@@ -44,8 +46,12 @@ const BookingCard = ({ booking }) => {
           </h1>
         </div>
         <div className=" flex items-center gap-3 ">
-            <BookingDelteModal destinationName={destinationName} _id={_id}/>
-            <Button className={'rounded-none'} variant="outline"><IoEyeOutline /> View</Button>
+          <BookingDelteModal destinationName={destinationName} _id={_id} />
+          <Link href={`/destinations/${_id}`}>
+            <Button className={"rounded-none"} variant="outline">
+              <IoEyeOutline /> View
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

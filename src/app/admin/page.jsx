@@ -21,7 +21,7 @@ const AdminPage = async () => {
   const bookingDatas = await res.json();
 
   return (
-    <div className="lg:max-w-7xl container pt-10 pb-20 mx-auto">
+    <div className="lg:max-w-7xl w-[95%] md:container pt-10 pb-20 mx-auto">
       <div className="space-y-2.5">
         <h1 className="text-3xl font-bold">My Profile</h1>
         <p className="text-gray-400">
@@ -30,7 +30,7 @@ const AdminPage = async () => {
       </div>
 
       <div className="grid grid-cols-3 gap-5 mt-10 ">
-        <div className="col-span-1 border p-3 flex flex-col items-center gap-3">
+        <div className="md:col-span-1 col-span-3 border p-3 flex flex-col items-center gap-3">
           <div className="w-40 rounded-full ">
             <Image
               src={image}
@@ -61,7 +61,7 @@ const AdminPage = async () => {
 
           <UpdateProfileModal />
         </div>
-        <div className="col-span-2"> 
+        <div className="col-span-3 md:col-span-2"> 
           <h1 className="text-2xl font-bold mb-5">Travel Stats</h1>
           <div className="grid grid-cols-2 gap-5">
             {/* stats card */}

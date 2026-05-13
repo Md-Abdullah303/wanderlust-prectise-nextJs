@@ -49,7 +49,7 @@ const AddDestination = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto pt-10 pb-5">
+    <div className="max-w-7xl md:container w-[90%] mx-auto pt-10 pb-5">
       <h1 className="text-4xl font-bold py-2.5">AddDestination page</h1>
       <div className=" max-w-3xl mx-auto">
         <form
