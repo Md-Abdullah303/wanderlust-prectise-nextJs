@@ -7,21 +7,24 @@ import logo from "../../../public/assets/Wanderlast.png";
 import { FaRegUser, FaBars, FaTimes } from "react-icons/fa";
 import MyNavLink from "./MyNavLink";
 import LogoutButton from "./LogoutButton";
+import { authClient } from "@/app/lib/auth-client";
 
-const Navber = ({ userData }) => {
+const Navber = () => {
+  const {
+    data: session,
+    isPending, //loading state
+    error, //error object
+    refetch, //refetch the session
+  } = authClient.useSession();
+  const userData = session?.user;
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-sm">
-
       {/* ================= MOBILE + TABLET TOP BAR ================= */}
       <div className="flex items-center justify-between px-4 py-4 md:px-6 lg:hidden">
-
         {/* MENU BUTTON (mobile + tablet) */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-2xl"
-        >
+        <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl">
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
@@ -67,14 +70,23 @@ const Navber = ({ userData }) => {
 
       {/* ================= DESKTOP (PC ONLY) ================= */}
       <div className="hidden lg:flex items-center justify-between gap-8 px-15 py-5">
-
         {/* LEFT LINKS */}
         <ul className="flex items-center gap-5 text-lg">
-          <li><MyNavLink href={"/"}>Home</MyNavLink></li>
-          <li><MyNavLink href={"/destinations"}>Destinations</MyNavLink></li>
-          <li><MyNavLink href={"/my-booking"}>My Booking</MyNavLink></li>
-          <li><MyNavLink href={"/admin"}>Admin</MyNavLink></li>
-          <li><MyNavLink href={"/add-destination"}>Add Destination</MyNavLink></li>
+          <li>
+            <MyNavLink href={"/"}>Home</MyNavLink>
+          </li>
+          <li>
+            <MyNavLink href={"/destinations"}>Destinations</MyNavLink>
+          </li>
+          <li>
+            <MyNavLink href={"/my-booking"}>My Booking</MyNavLink>
+          </li>
+          <li>
+            <MyNavLink href={"/admin"}>Admin</MyNavLink>
+          </li>
+          <li>
+            <MyNavLink href={"/add-destination"}>Add Destination</MyNavLink>
+          </li>
         </ul>
 
         {/* LOGO */}
