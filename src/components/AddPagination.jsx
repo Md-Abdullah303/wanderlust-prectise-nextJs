@@ -21,7 +21,9 @@ const AddPagination = () => {
   // FETCH
   useEffect(() => {
     const fetchDestination = async () => {
-      const res = await fetch("http://localhost:5000/destination");
+      const res = await fetch(
+        "https://wanderlust-server-theta.vercel.app/destination",
+      );
       const data = await res.json();
       setDestination(data);
     };
@@ -33,23 +35,17 @@ const AddPagination = () => {
   useEffect(() => {
     if (destination.length === 0) return;
 
-
-
     const swiper = new Swiper(".swiper", {
       modules: [Navigation, Pagination, Autoplay],
-    
+
       direction: "horizontal",
       loop: true,
-
-      
 
       autoplay: {
         delay: 3000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       },
-
-      
 
       pagination: {
         el: ".swiper-pagination",
@@ -62,7 +58,7 @@ const AddPagination = () => {
       },
     });
 
-    swiper.autoplay.start()
+    swiper.autoplay.start();
 
     return () => swiper.destroy(true, true);
   }, [destination]);
@@ -72,18 +68,22 @@ const AddPagination = () => {
       {/* HEADER */}
       <div className="flex flex-col md:flex-row items-start justify-between gap-7">
         <div className="space-y-2">
-          <h1 className="text-xl md:text-3xl font-bold">Featured Destinations</h1>
+          <h1 className="text-xl md:text-3xl font-bold">
+            Featured Destinations
+          </h1>
           <p className="md:text-lg text-[14px] text-gray-400">
             Handpicked travel experiences for the adventure seekers
           </p>
         </div>
 
-        <Link href={'/destinations'}><Button
-          className="rounded-none text-cyan-400 border-cyan-400"
-          variant="outline"
-        >
-          All Destinations <FaLongArrowAltRight />
-        </Button></Link>
+        <Link href={"/destinations"}>
+          <Button
+            className="rounded-none text-cyan-400 border-cyan-400"
+            variant="outline"
+          >
+            All Destinations <FaLongArrowAltRight />
+          </Button>
+        </Link>
       </div>
 
       {/* SWIPER */}

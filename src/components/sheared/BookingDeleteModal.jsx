@@ -5,24 +5,29 @@ import { useRouter } from "next/navigation";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { toast } from "react-toastify";
 
-export function BookingDelteModal({destinationName, _id}) {
-    const router = useRouter()
-    const handleDelete= async()=>{
-        const res = await fetch(`http://localhost:5000/booking/${_id}`, {
-            method:"DELETE",
-            headers:{
-                "content-type": "application/json"
-            }
-        })
-        const data = await res.json()
-        if(data.deletedCount > 0){
-            router.refresh()
-            toast.success("Delete successfully");
-        }
+export function BookingDelteModal({ destinationName, _id }) {
+  const router = useRouter();
+  const handleDelete = async () => {
+    const res = await fetch(
+      `https://wanderlust-server-theta.vercel.app/booking/${_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+      },
+    );
+    const data = await res.json();
+    if (data.deletedCount > 0) {
+      router.refresh();
+      toast.success("Delete successfully");
     }
+  };
   return (
     <AlertDialog>
-      <Button className={'rounded-none'} variant="danger"><RiDeleteBin5Line /> Cancel</Button>
+      <Button className={"rounded-none"} variant="danger">
+        <RiDeleteBin5Line /> Cancel
+      </Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-100">

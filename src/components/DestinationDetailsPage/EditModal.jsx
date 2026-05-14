@@ -19,8 +19,8 @@ import { CiEdit } from "react-icons/ci";
 import { toast } from "react-toastify";
 
 export function EditModal({ destination }) {
-    const [open, setOpen] = useState(false)
-    const router = useRouter()
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
   const {
     _id,
     imageUrl,
@@ -41,29 +41,36 @@ export function EditModal({ destination }) {
 
     console.log(destination);
 
-      const res = await fetch(`http://localhost:5000/destination/${_id}`, {
+    const res = await fetch(
+      `https://wanderlust-server-theta.vercel.app/destination/${_id}`,
+      {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify(destination),
-      });
+      },
+    );
 
-      const data = await res.json();
+    const data = await res.json();
     //   console.log("data after UPDATE in client:", data);
 
-      if(data?.modifiedCount > 0){
-        router.refresh()
-        toast.success("Destination is updated");
-        setOpen(false)
-      }else{
-        toast.error("Something was wrong!!")
-      }
+    if (data?.modifiedCount > 0) {
+      router.refresh();
+      toast.success("Destination is updated");
+      setOpen(false);
+    } else {
+      toast.error("Something was wrong!!");
+    }
   };
 
   return (
-    <Modal isOpen={open} onOpenChange={setOpen} >
-      <Button onPress={()=> setOpen(true)} className={"rounded-lg"} variant="outline">
+    <Modal isOpen={open} onOpenChange={setOpen}>
+      <Button
+        onPress={() => setOpen(true)}
+        className={"rounded-lg"}
+        variant="outline"
+      >
         <CiEdit /> Edit
       </Button>
       <Modal.Backdrop>
@@ -75,14 +82,15 @@ export function EditModal({ destination }) {
             </Modal.Header>
             <Modal.Body className="p-6">
               <Surface variant="default">
-                <form
-                  onSubmit={onSubmit}
-                  className="space-y-8 rounded-sm"
-                >
+                <form onSubmit={onSubmit} className="space-y-8 rounded-sm">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Destination Name */}
                     <div className="md:col-span-2">
-                      <TextField defaultValue={destinationName} name="destinationName" isRequired>
+                      <TextField
+                        defaultValue={destinationName}
+                        name="destinationName"
+                        isRequired
+                      >
                         <Label>Destination Name</Label>
                         <Input
                           placeholder="Bali Paradise"
@@ -145,7 +153,12 @@ export function EditModal({ destination }) {
                     </div>
 
                     {/* Price */}
-                    <TextField defaultValue={price} name="price" type="number" isRequired>
+                    <TextField
+                      defaultValue={price}
+                      name="price"
+                      type="number"
+                      isRequired
+                    >
                       <Label>Price (USD)</Label>
                       <Input
                         type="number"
@@ -156,7 +169,11 @@ export function EditModal({ destination }) {
                     </TextField>
 
                     {/* Duration */}
-                    <TextField defaultValue={duration} name="duration" isRequired>
+                    <TextField
+                      defaultValue={duration}
+                      name="duration"
+                      isRequired
+                    >
                       <Label>Duration</Label>
                       <Input
                         placeholder="7 Days / 6 Nights"
@@ -167,7 +184,12 @@ export function EditModal({ destination }) {
 
                     {/* Departure Date */}
                     <div className="md:col-span-2">
-                      <TextField defaultValue={departureDate} name="departureDate" type="date" isRequired>
+                      <TextField
+                        defaultValue={departureDate}
+                        name="departureDate"
+                        type="date"
+                        isRequired
+                      >
                         <Label>Departure Date</Label>
                         <Input type="date" className="rounded-2xl" />
                         <FieldError />
@@ -176,7 +198,11 @@ export function EditModal({ destination }) {
 
                     {/* Image URL - Removed preview */}
                     <div className="md:col-span-2">
-                      <TextField defaultValue={imageUrl} name="imageUrl" isRequired>
+                      <TextField
+                        defaultValue={imageUrl}
+                        name="imageUrl"
+                        isRequired
+                      >
                         <Label>Image URL</Label>
                         <Input
                           type="url"
@@ -189,7 +215,11 @@ export function EditModal({ destination }) {
 
                     {/* Description */}
                     <div className="md:col-span-2">
-                      <TextField defaultValue={description} name="description" isRequired>
+                      <TextField
+                        defaultValue={description}
+                        name="description"
+                        isRequired
+                      >
                         <Label>Description</Label>
                         <TextArea
                           placeholder="Describe the travel experience..."

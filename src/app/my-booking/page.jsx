@@ -8,7 +8,9 @@ const MyBookingPage = async () => {
   });
   const USERDATA = session?.user;
 
-  const res = await fetch(`http://localhost:5000/booking/${USERDATA.id}`);
+  const res = await fetch(
+    `https://wanderlust-server-theta.vercel.app/booking/${USERDATA.id}`,
+  );
   const bookingDatas = await res.json();
   // console.log(bookingDatas);
 
@@ -19,15 +21,16 @@ const MyBookingPage = async () => {
         Manage and view your upcoming travel plans
       </p>
       <div className="mt-8 flex flex-col items-start gap-4 w-full">
-        {bookingDatas.length == 0
-          ? <div className="text-center w-full space-y-2 bg-slate-200 py-10">
+        {bookingDatas.length == 0 ? (
+          <div className="text-center w-full space-y-2 bg-slate-200 py-10">
             <h1 className="text-2xl font-bold">Booking is Empty</h1>
             <p className="text-lg text-gray-400">Go and add some booking</p>
-
           </div>
-          : bookingDatas.map((booking) => (
-              <BookingCard key={booking._id} booking={booking} />
-            ))}
+        ) : (
+          bookingDatas.map((booking) => (
+            <BookingCard key={booking._id} booking={booking} />
+          ))
+        )}
       </div>
     </div>
   );

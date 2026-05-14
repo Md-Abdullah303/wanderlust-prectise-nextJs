@@ -17,7 +17,9 @@ const AdminPage = async () => {
   const { email, name, image } = userData;
   console.log(userData);
 
-  const res = await fetch(`http://localhost:5000/booking/${userData.id}`);
+  const res = await fetch(
+    `https://wanderlust-server-theta.vercel.app/booking/${userData.id}`,
+  );
   const bookingDatas = await res.json();
 
   return (
@@ -48,10 +50,12 @@ const AdminPage = async () => {
           <div className="w-full">
             <p className="flex gap-4 justify-between">
               <span className="text-gray-400">Member since</span>{" "}
-              <span className="font-bold">{new Date(userData.createdAt).toLocaleDateString("en-US", {
-                month: "long",
-                year: "numeric"
-              })}</span>
+              <span className="font-bold">
+                {new Date(userData.createdAt).toLocaleDateString("en-US", {
+                  month: "long",
+                  year: "numeric",
+                })}
+              </span>
             </p>
             <p className="flex gap-4 justify-between">
               <span className="text-gray-400">Nationality</span>{" "}
@@ -61,14 +65,16 @@ const AdminPage = async () => {
 
           <UpdateProfileModal />
         </div>
-        <div className="col-span-3 md:col-span-2"> 
+        <div className="col-span-3 md:col-span-2">
           <h1 className="text-2xl font-bold mb-5">Travel Stats</h1>
           <div className="grid grid-cols-2 gap-5">
             {/* stats card */}
             <div className="border rounded-lg p-3 flex items-center justify-between gap-3.5">
               <div className="">
                 <h1 className="text-xl">Total Bookings</h1>
-                <p className="text-green-500 text-3xl font-bold">{bookingDatas.length}</p>
+                <p className="text-green-500 text-3xl font-bold">
+                  {bookingDatas.length}
+                </p>
               </div>
               <div className=" bg-green-100 w-10 h-10 rounded-full flex items-center justify-center">
                 <FaPlane />
@@ -80,7 +86,7 @@ const AdminPage = async () => {
                 <p className="text-3xl text-blue-500 font-bold">18</p>
               </div>
               <div className=" bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center">
-               <FaGlobeAmericas />
+                <FaGlobeAmericas />
               </div>
             </div>
             <div className="border rounded-lg p-3 flex items-center justify-between gap-3.5">

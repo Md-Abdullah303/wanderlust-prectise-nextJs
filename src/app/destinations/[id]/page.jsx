@@ -15,7 +15,9 @@ import { toast } from "react-toastify";
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:5000/destination/${id}`);
+  const res = await fetch(
+    `https://wanderlust-server-theta.vercel.app/destination/${id}`,
+  );
   const destination = await res.json();
   // console.log(destination);
 
@@ -113,9 +115,8 @@ const DestinationDetailsPage = async ({ params }) => {
             </div>
           </div>
           {/* info right */}
-          <div className="col-span-3 border-t sm:border-none md:grid-cols-1">
-          <InputRightForm destination={destination} />
-
+          <div className="col-span-3 border-t sm:border-none md:col-span-1">
+            <InputRightForm destination={destination} />
           </div>
         </div>
       </div>

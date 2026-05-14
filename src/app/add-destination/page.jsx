@@ -15,37 +15,38 @@ import { toast } from "react-toastify";
 
 const AddDestination = () => {
   const onSubmit = async (e) => {
-    try{
+    try {
       e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const destination = Object.fromEntries(formData.entries());
+      const formData = new FormData(e.target);
+      const destination = Object.fromEntries(formData.entries());
 
-    console.log(destination);
+      console.log(destination);
 
-    const res = await fetch("http://localhost:5000/destination", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(destination),
-    });
+      const res = await fetch(
+        "https://wanderlust-server-theta.vercel.app/destination",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(destination),
+        },
+      );
 
-    const data = await res.json();
-    console.log("data after post in client:", data, res);
+      const data = await res.json();
+      console.log("data after post in client:", data, res);
 
-    console.log(data);
+      console.log(data);
 
-    if(res.ok){
-      toast.success("Destination is added..");
-    }else{
-      toast.error("Something was wrong!!")
-    }
-    }
-    catch(e){
+      if (res.ok) {
+        toast.success("Destination is added..");
+      } else {
+        toast.error("Something was wrong!!");
+      }
+    } catch (e) {
       console.log("error :", e);
     }
-
   };
 
   return (

@@ -2,7 +2,9 @@ import DestinationCard from "@/components/sheared/DestinationCard";
 import React from "react";
 
 const DestinationPage = async () => {
-  const res = await fetch("http://localhost:5000/destination");
+  const res = await fetch(
+    "https://wanderlust-server-theta.vercel.app/destination",
+  );
   const destinations = await res.json();
   // console.log(destination);
 

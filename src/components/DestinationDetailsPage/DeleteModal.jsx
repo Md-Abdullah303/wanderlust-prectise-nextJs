@@ -7,15 +7,18 @@ import { toast } from "react-toastify";
 
 export function DeleteModalPage({ destination }) {
   const { _id, destinationName } = destination;
-  
+
   const handleDelete = async () => {
     console.log(_id);
-    const res = await fetch(`http://localhost:5000/destination/${_id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
+    const res = await fetch(
+      `https://wanderlust-server-theta.vercel.app/destination/${_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
       },
-    });
+    );
     const data = await res.json();
     // console.log(data);
     if (data.deletedCount > 0) {

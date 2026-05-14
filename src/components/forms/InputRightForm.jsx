@@ -23,11 +23,11 @@ const InputRightForm = ({ destination }) => {
   const userData = session?.user;
   const [bookingDepartureDate, setBookingDepartureDate] = useState(null);
 
-//   console.log(destination);
+  //   console.log(destination);
   const handleBooking = async () => {
-    if(bookingDepartureDate == null){
-        alert("Departure Date is empty")
-        return;
+    if (bookingDepartureDate == null) {
+      alert("Departure Date is empty");
+      return;
     }
     const bookingData = {
       userId: userData?.id,
@@ -46,23 +46,23 @@ const InputRightForm = ({ destination }) => {
 
     // console.log(bookingData);
 
-
-    const res = await fetch("http://localhost:5000/booking", {
+    const res = await fetch(
+      "https://wanderlust-server-theta.vercel.app/booking",
+      {
         method: "POST",
-        headers:{
-            "content-type": "application/json"
+        headers: {
+          "content-type": "application/json",
         },
-        body: JSON.stringify(bookingData)
-    })
-    const data = await res.json()
+        body: JSON.stringify(bookingData),
+      },
+    );
+    const data = await res.json();
 
-    if(data.insertedId){
-        toast.success("Successfully Booking");
+    if (data.insertedId) {
+      toast.success("Successfully Booking");
     }
-
   };
 
-  
   return (
     <div className="">
       <h3 className="text-gray-400">Starting from</h3>
